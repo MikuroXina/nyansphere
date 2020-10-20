@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { CodeBody } from "../components/code-body";
+import { JudgeStatus } from "../components/judge-status";
 
 const exampleText = (
   <>
@@ -24,6 +25,7 @@ const Index: NextPage = () => (
   <>
     <header>
       <span className="title">Nyansphere</span>
+      <JudgeStatus state="no-submit" />
     </header>
     <main>
       <CodeBody text={exampleText} defaultCode={exampleCode} />
@@ -39,14 +41,14 @@ const Index: NextPage = () => (
       }
       main {
         position: absolute;
-        top: 4rem;
+        top: 3rem;
         left: 0;
         right: 0;
         bottom: 0;
       }
       .title {
         font-weight: bold;
-        font-size: 1.5rem;
+        margin-right: 1rem;
       }
     `}</style>
     <style jsx global>{`
