@@ -1,27 +1,32 @@
 import type { NextPage } from "next";
 import { CodeBody } from "../components/code-body";
 
+const exampleText = (
+  <>
+    <h1>Hello, World!</h1>
+    動作確認をしましょう。
+    <h2>入力</h2>
+    なし
+    <h2>出力</h2>
+    <code>Hello, World!</code> と改行を合わせて出力する.
+  </>
+);
+
+const exampleCode = [
+  "#include <iostream>",
+  "",
+  "int main() {",
+  '  std::cout << "Hello, World!\\n";',
+  "}",
+].join("\n");
+
 const Index: NextPage = () => (
   <>
     <header>
       <span className="title">Nyansphere</span>
     </header>
     <main>
-      <CodeBody
-        text={
-          <>
-            <h1>Hello, World!</h1>
-            動作確認をしましょう。
-          </>
-        }
-        defaultCode={[
-          "#include <iostream>",
-          "",
-          "int main() {",
-          '  std::cout << "Hello, World!\\n";',
-          "}",
-        ].join("\n")}
-      />
+      <CodeBody text={exampleText} defaultCode={exampleCode} />
     </main>
     <style jsx>{`
       header {
@@ -33,7 +38,11 @@ const Index: NextPage = () => (
         background-color: white;
       }
       main {
-        padding-top: 4rem;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
       .title {
         font-weight: bold;
@@ -41,6 +50,9 @@ const Index: NextPage = () => (
       }
     `}</style>
     <style jsx global>{`
+      html {
+        overflow: hidden;
+      }
       body {
         margin: 0;
         padding: 0;

@@ -20,21 +20,26 @@ export const CodeBody: FC<{ text: ReactNode; defaultCode: string }> = ({
     </main>
     <style jsx>{`
       main {
+        position: absolute;
         display: flex;
-        width: 99%;
-        height: 89vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
       article {
         max-width: 50%;
         flex: 0 1 50%;
       }
-      section {
+      article:first-child {
+        position: relative;
+        max-height: 100%;
+        overflow: scroll;
         margin-left: 1rem;
       }
       .button {
-        position: absolute;
-        left: 1rem;
-        bottom: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
       }
     `}</style>
   </>
