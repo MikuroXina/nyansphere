@@ -1,11 +1,6 @@
 import type { FC } from "react";
-import type { JudgeState } from "./judge-status";
-
-export interface SubmitDatum {
-  title: string;
-  date: string;
-  judge: JudgeState;
-}
+import type { PartialSubmit } from "../lib/submit";
+import { JudgeState } from "../lib/judge-state";
 
 const JudgeText: FC<{ state: JudgeState }> = ({ state }) => (
   <>
@@ -33,7 +28,7 @@ const JudgeText: FC<{ state: JudgeState }> = ({ state }) => (
   </>
 );
 
-const SubmitColumn: FC<{ datum: SubmitDatum }> = ({
+const SubmitColumn: FC<{ datum: PartialSubmit }> = ({
   datum: { title, date, judge },
 }) => (
   <>
@@ -48,7 +43,7 @@ const SubmitColumn: FC<{ datum: SubmitDatum }> = ({
   </>
 );
 
-export const SubmitList: FC<{ data: SubmitDatum[] }> = ({ data }) => (
+export const SubmitList: FC<{ data: PartialSubmit[] }> = ({ data }) => (
   <>
     <ul>
       {data.map((datum, i) => (

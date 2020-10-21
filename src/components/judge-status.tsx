@@ -1,6 +1,5 @@
 import type { FC } from "react";
-
-export type JudgeState = "no-submit" | "judging" | "wrong" | "accepted";
+import { JudgeState } from "../lib/judge-state";
 
 const messages: Readonly<Record<JudgeState, string>> = {
   "no-submit": "",
