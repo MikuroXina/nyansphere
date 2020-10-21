@@ -1,7 +1,7 @@
 import type { FC } from "react";
-import Link from "next/link";
 import type { PartialSubmit } from "../lib/submit";
 import { JudgeState } from "../lib/judge-state";
+import { InternalLink } from "./internal-link";
 
 const JudgeText: FC<{ state: JudgeState }> = ({ state }) => (
   <>
@@ -45,22 +45,9 @@ const SubmitColumn: FC<{ datum: PartialSubmit }> = ({
 );
 
 const SubmitListItem: FC<PartialSubmit> = (datum) => (
-  <>
-    <Link href={`/submits/${datum.id}`}>
-      <a>
-        <SubmitColumn datum={datum}></SubmitColumn>
-      </a>
-    </Link>
-    <style jsx>{`
-      a {
-        color: black;
-        text-decoration: none;
-      }
-      a:hover {
-        color: #555;
-      }
-    `}</style>
-  </>
+  <InternalLink href={`/submits/${datum.id}`}>
+    <SubmitColumn datum={datum}></SubmitColumn>
+  </InternalLink>
 );
 
 export const SubmitList: FC<{ data: PartialSubmit[] }> = ({ data }) => (
