@@ -1,5 +1,5 @@
-import type { NextPage } from "next";
 import { InternalLink } from "../components/internal-link";
+import type { NextPage } from "next";
 import { Template } from "../components/template";
 
 const Index: NextPage = () => (

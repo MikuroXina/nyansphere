@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
+import type { PartialSubject } from "../lib/subject";
 import { SubjectList } from "../components/subject-list";
 import { Template } from "../components/template";
 import { fetchPartialSubjects } from "../lib/fetch/subject";
-import type { PartialSubject } from "../lib/subject";
 
 interface SubjectsProps {
   subjects: PartialSubject[];

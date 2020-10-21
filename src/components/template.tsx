@@ -1,5 +1,5 @@
-import Head from "next/head";
 import type { FC, ReactNode } from "react";
+import Head from "next/head";
 
 export const Template: FC<{ headerItems?: ReactNode[] }> = ({
   children,

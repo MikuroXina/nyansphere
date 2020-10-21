@@ -1,5 +1,5 @@
-import MonacoEditor from "@monaco-editor/react";
 import { FC, ReactNode, useRef } from "react";
+import MonacoEditor from "@monaco-editor/react";
 import { SubmitButton } from "./submit-button";
 
 export const CodeBody: FC<{

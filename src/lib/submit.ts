@@ -1,4 +1,4 @@
-import { JudgeState } from "./judge-state";
+import type { JudgeState } from "./judge-state";
 
 export interface Submit {
   id: string;

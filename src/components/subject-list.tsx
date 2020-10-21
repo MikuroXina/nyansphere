@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import type { PartialSubject } from "../lib/subject";
 import { InternalLink } from "./internal-link";
+import type { PartialSubject } from "../lib/subject";
 
 const SubjectColumn: FC<{ datum: PartialSubject }> = ({ datum: { title } }) => (
   <>

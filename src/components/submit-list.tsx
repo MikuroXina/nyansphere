@@ -1,7 +1,7 @@
 import type { FC } from "react";
-import type { PartialSubmit } from "../lib/submit";
-import { JudgeState } from "../lib/judge-state";
 import { InternalLink } from "./internal-link";
+import { JudgeState } from "../lib/judge-state";
+import type { PartialSubmit } from "../lib/submit";
 
 const JudgeText: FC<{ state: JudgeState }> = ({ state }) => (
   <>

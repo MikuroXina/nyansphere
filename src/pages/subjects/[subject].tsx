@@ -1,12 +1,12 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { CodeBody } from "../../components/code-body";
 import { JudgeStatus } from "../../components/judge-status";
+import type { Subject } from "../../lib/subject";
 import { SubjectText } from "../../components/subject-text";
 import { Template } from "../../components/template";
 import { fetchSubject } from "../../lib/fetch/subject";
-import { useJudgeState } from "../../lib/judge-state";
 import { postSubmit } from "../../lib/post-submit";
-import type { Subject } from "../../lib/subject";
+import { useJudgeState } from "../../lib/judge-state";
 
 const SubjectPage: NextPage<Subject> = (subject) => {
   const state = useJudgeState(subject.id);

@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
+import type { PartialSubmit } from "../lib/submit";
 import { SubmitList } from "../components/submit-list";
 import { Template } from "../components/template";
 import { fetchPartialSubmits } from "../lib/fetch/submit";
-import type { PartialSubmit } from "../lib/submit";
 
 interface SubmitsProps {
   submits: PartialSubmit[];
