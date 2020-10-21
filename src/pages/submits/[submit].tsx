@@ -2,7 +2,7 @@ import MonacoEditor from "@monaco-editor/react";
 import type { GetServerSideProps, NextPage } from "next";
 import { JudgeStatus } from "../../components/judge-status";
 import { Template } from "../../components/template";
-import { fetchSubmit } from "../../lib/fetch-submit";
+import { fetchSubmit } from "../../lib/fetch/submit";
 import type { Submit } from "../../lib/submit";
 
 const SubmitPage: NextPage<Submit> = ({ title, date, judge, code }) => (

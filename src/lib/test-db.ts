@@ -1,3 +1,4 @@
+import type { Subject } from "./subject";
 import type { Submit } from "./submit";
 
 export const submits: readonly Submit[] = [
@@ -25,3 +26,5 @@ export const submits: readonly Submit[] = [
     ].join("\n"),
   },
 ];
+
+export const subjects: readonly Subject[] = [];
