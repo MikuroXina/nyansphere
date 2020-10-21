@@ -1,9 +1,9 @@
 import Head from "next/head";
 import type { FC, ReactNode } from "react";
 
-export const Template: FC<{ headerItem?: ReactNode }> = ({
+export const Template: FC<{ headerItems?: ReactNode[] }> = ({
   children,
-  headerItem,
+  headerItems,
 }) => (
   <>
     <Head>
@@ -11,7 +11,9 @@ export const Template: FC<{ headerItem?: ReactNode }> = ({
     </Head>
     <header>
       <span className="title">Nyansphere</span>
-      {headerItem}
+      {headerItems?.map((item, i) => (
+        <span key={i}>{item}</span>
+      ))}
     </header>
     <main>{children}</main>
     <style jsx>{`
@@ -22,6 +24,9 @@ export const Template: FC<{ headerItem?: ReactNode }> = ({
         padding: 0.2rem 1rem;
         box-shadow: #aaa 0px 4px 8px;
         background-color: white;
+      }
+      span {
+        margin: 1rem;
       }
       main {
         position: absolute;

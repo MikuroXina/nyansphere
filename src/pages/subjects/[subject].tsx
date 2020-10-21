@@ -7,7 +7,7 @@ import { fetchSubject } from "../../lib/fetch/subject";
 import type { Subject } from "../../lib/subject";
 
 const SubjectPage: NextPage<Subject> = (subject) => (
-  <Template headerItem={<JudgeStatus state="no-submit" />}>
+  <Template headerItems={[<JudgeStatus state="no-submit" key="status" />]}>
     <CodeBody
       text={<SubjectText {...subject} />}
       defaultCode={subject.defaultCode ?? ""}
