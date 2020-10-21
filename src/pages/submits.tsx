@@ -1,16 +1,21 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import { SubmitList } from "../components/submit-list";
 import { Template } from "../components/template";
+import { fetchPartialSubmits } from "../lib/fetch-submit";
+import type { PartialSubmit } from "../lib/submit";
 
-const Submits: NextPage = () => (
+interface SubmitsProps {
+  submits: PartialSubmit[];
+}
+
+const Submits: NextPage<SubmitsProps> = ({ submits }) => (
   <Template>
-    <SubmitList
-      data={[
-        { title: "Hello, World!", date: "2020/10/20 11:00", judge: "wrong" },
-        { title: "Hello, World!", date: "2020/10/20 12:00", judge: "accepted" },
-      ]}
-    ></SubmitList>
+    <SubmitList data={submits}></SubmitList>
   </Template>
 );
 
 export default Submits;
+
+export const getServerSideProps: GetServerSideProps<SubmitsProps> = async () => ({
+  props: { submits: await fetchPartialSubmits() },
+});

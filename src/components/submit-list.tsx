@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import Link from "next/link";
 import type { PartialSubmit } from "../lib/submit";
 import { JudgeState } from "../lib/judge-state";
 
@@ -43,12 +44,31 @@ const SubmitColumn: FC<{ datum: PartialSubmit }> = ({
   </>
 );
 
+const SubmitListItem: FC<PartialSubmit> = (datum) => (
+  <>
+    <Link href={`/submits/${datum.id}`}>
+      <a>
+        <SubmitColumn datum={datum}></SubmitColumn>
+      </a>
+    </Link>
+    <style jsx>{`
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #555;
+      }
+    `}</style>
+  </>
+);
+
 export const SubmitList: FC<{ data: PartialSubmit[] }> = ({ data }) => (
   <>
     <ul>
       {data.map((datum, i) => (
         <li key={i}>
-          <SubmitColumn datum={datum}></SubmitColumn>
+          <SubmitListItem {...datum} />
         </li>
       ))}
     </ul>
@@ -69,9 +89,6 @@ export const SubmitList: FC<{ data: PartialSubmit[] }> = ({ data }) => (
       }
       li:first-child {
         border-width: thin 0;
-      }
-      li:hover {
-        color: #555;
       }
     `}</style>
   </>
