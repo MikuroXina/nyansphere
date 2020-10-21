@@ -27,4 +27,19 @@ export const submits: readonly Submit[] = [
   },
 ];
 
-export const subjects: readonly Subject[] = [];
+export const subjects: readonly Subject[] = [
+  {
+    id: "0",
+    title: "Hello, World!",
+    desc: "動作確認をしましょう。",
+    defaultCode: [
+      "#include <iostream>",
+      "",
+      "int main() {",
+      '  std::cout << "Hello, World!\\n";',
+      "}",
+    ].join("\n"),
+    inputDesc: "なし",
+    outputDesc: "`Hello, World!` と改行を合わせて出力すること。",
+  },
+];
