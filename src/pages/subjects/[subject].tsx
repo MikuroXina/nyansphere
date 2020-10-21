@@ -4,16 +4,24 @@ import { JudgeStatus } from "../../components/judge-status";
 import { SubjectText } from "../../components/subject-text";
 import { Template } from "../../components/template";
 import { fetchSubject } from "../../lib/fetch/subject";
+import { useJudgeState } from "../../lib/judge-state";
+import { postSubmit } from "../../lib/post-submit";
 import type { Subject } from "../../lib/subject";
 
-const SubjectPage: NextPage<Subject> = (subject) => (
-  <Template headerItems={[<JudgeStatus state="no-submit" key="status" />]}>
-    <CodeBody
-      text={<SubjectText {...subject} />}
-      defaultCode={subject.defaultCode ?? ""}
-    />
-  </Template>
-);
+const SubjectPage: NextPage<Subject> = (subject) => {
+  const state = useJudgeState(subject.id);
+  return (
+    <Template headerItems={[<JudgeStatus state={state} key="status" />]}>
+      <CodeBody
+        text={<SubjectText {...subject} />}
+        onSubmit={(code) => {
+          postSubmit(subject.id, code);
+        }}
+        defaultCode={subject.defaultCode ?? ""}
+      />
+    </Template>
+  );
+};
 
 export default SubjectPage;
 

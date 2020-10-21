@@ -1,8 +1,8 @@
 import type { FC } from "react";
 
-export const SubmitButton: FC = () => (
+export const SubmitButton: FC<{ onClick?: () => void }> = ({ onClick }) => (
   <>
-    <button>提出</button>
+    <button onClick={onClick}>提出</button>
     <style jsx>{`
       button {
         width: 6rem;
