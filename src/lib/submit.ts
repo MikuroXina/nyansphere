@@ -9,4 +9,4 @@ export interface Submit {
   code: string;
 }
 
-export type PartialSubmit = Pick<Submit, "title" | "date" | "judge">;
+export type PartialSubmit = Pick<Submit, "id" | "title" | "date" | "judge">;
