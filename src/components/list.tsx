@@ -1,3 +1,4 @@
+import { Card } from "./card";
 import type { FC } from "react";
 
 export function List<T>({
@@ -8,20 +9,13 @@ export function List<T>({
   Component: FC<T>;
 }): JSX.Element {
   return (
-    <ul>
+    <Card>
       {data.map((datum, i) => (
         <li key={i}>
           <Component {...datum} />
         </li>
       ))}
       <style jsx>{`
-        ul {
-          margin: 0 auto;
-          padding: 1rem;
-          max-width: 36rem;
-          background-color: white;
-          border-radius: 2rem;
-        }
         li {
           padding-left: 1rem;
           border: solid 0 #aaa;
@@ -33,6 +27,6 @@ export function List<T>({
           border-width: thin 0;
         }
       `}</style>
-    </ul>
+    </Card>
   );
 }
