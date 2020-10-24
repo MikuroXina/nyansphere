@@ -9,30 +9,28 @@ export const CodeBody: FC<{
 }> = ({ text, onSubmit, defaultCode }) => {
   const codeGetter = useRef<() => string>();
   return (
-    <>
-      <main>
-        <article>
-          <section>{text}</section>
-          <div className="button">
-            <SubmitButton
-              onClick={() => {
-                if (onSubmit && codeGetter.current) {
-                  onSubmit(codeGetter.current());
-                }
-              }}
-            />
-          </div>
-        </article>
-        <article>
-          <MonacoEditor
-            language="cpp"
-            value={defaultCode}
-            editorDidMount={(editor) => {
-              codeGetter.current = editor;
+    <main>
+      <article>
+        <section>{text}</section>
+        <div className="button">
+          <SubmitButton
+            onClick={() => {
+              if (onSubmit && codeGetter.current) {
+                onSubmit(codeGetter.current());
+              }
             }}
           />
-        </article>
-      </main>
+        </div>
+      </article>
+      <article>
+        <MonacoEditor
+          language="cpp"
+          value={defaultCode}
+          editorDidMount={(editor) => {
+            codeGetter.current = editor;
+          }}
+        />
+      </article>
       <style jsx>{`
         main {
           position: absolute;
@@ -57,6 +55,6 @@ export const CodeBody: FC<{
           margin-bottom: 1rem;
         }
       `}</style>
-    </>
+    </main>
   );
 };

@@ -1,8 +1,8 @@
 import type { FC } from "react";
 
 export const SubmitButton: FC<{ onClick?: () => void }> = ({ onClick }) => (
-  <>
-    <button onClick={onClick}>提出</button>
+  <button onClick={onClick}>
+    提出
     <style jsx>{`
       button {
         width: 6rem;
@@ -21,5 +21,5 @@ export const SubmitButton: FC<{ onClick?: () => void }> = ({ onClick }) => (
         box-shadow: transparent;
       }
     `}</style>
-  </>
+  </button>
 );
