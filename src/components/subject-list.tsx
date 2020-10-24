@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { InternalLink } from "./internal-link";
+import { List } from "./list";
 import type { PartialSubject } from "../lib/subject";
 
 const SubjectColumn: FC<{ datum: PartialSubject }> = ({ datum: { title } }) => (
@@ -20,32 +21,5 @@ const SubjectListItem: FC<PartialSubject> = (datum) => (
 );
 
 export const SubjectList: FC<{ data: PartialSubject[] }> = ({ data }) => (
-  <>
-    <ul>
-      {data.map((datum, i) => (
-        <li key={i}>
-          <SubjectListItem {...datum} />
-        </li>
-      ))}
-    </ul>
-    <style jsx>{`
-      ul {
-        margin: 0 auto;
-        padding: 1rem;
-        max-width: 36rem;
-        background-color: white;
-        border-radius: 2rem;
-      }
-      li {
-        padding-left: 1rem;
-        border: solid 0 #aaa;
-        border-bottom-width: thin;
-        list-style: none;
-        cursor: pointer;
-      }
-      li:first-child {
-        border-width: thin 0;
-      }
-    `}</style>
-  </>
+  <List data={data} Component={SubjectListItem} />
 );

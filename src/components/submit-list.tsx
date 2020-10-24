@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { InternalLink } from "./internal-link";
-import { JudgeState } from "../lib/judge-state";
+import type { JudgeState } from "../lib/judge-state";
+import { List } from "./list";
 import type { PartialSubmit } from "../lib/submit";
 
 const JudgeText: FC<{ state: JudgeState }> = ({ state }) => (
@@ -51,32 +52,5 @@ const SubmitListItem: FC<PartialSubmit> = (datum) => (
 );
 
 export const SubmitList: FC<{ data: PartialSubmit[] }> = ({ data }) => (
-  <>
-    <ul>
-      {data.map((datum, i) => (
-        <li key={i}>
-          <SubmitListItem {...datum} />
-        </li>
-      ))}
-    </ul>
-    <style jsx>{`
-      ul {
-        margin: 0 auto;
-        padding: 1rem;
-        max-width: 36rem;
-        background-color: white;
-        border-radius: 2rem;
-      }
-      li {
-        padding-left: 1rem;
-        border: solid 0 #aaa;
-        border-bottom-width: thin;
-        list-style: none;
-        cursor: pointer;
-      }
-      li:first-child {
-        border-width: thin 0;
-      }
-    `}</style>
-  </>
+  <List data={data} Component={SubmitListItem} />
 );
