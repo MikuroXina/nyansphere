@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from "react";
 import Head from "next/head";
+import { InternalLink } from "./internal-link";
 
 export const Template: FC<{ headerItems?: ReactNode[] }> = ({
   children,
@@ -10,7 +11,9 @@ export const Template: FC<{ headerItems?: ReactNode[] }> = ({
       <title>Nyansphere</title>
     </Head>
     <header>
-      <span className="title">Nyansphere</span>
+      <span className="title">
+        <InternalLink href="/">Nyansphere</InternalLink>
+      </span>
       {headerItems?.map((item, i) => (
         <span key={i}>{item}</span>
       ))}
