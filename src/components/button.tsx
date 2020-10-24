@@ -1,8 +1,11 @@
 import type { FC } from "react";
 
-export const SubmitButton: FC<{ onClick?: () => void }> = ({ onClick }) => (
+const BaseButton: FC<{ label: string; onClick?: () => void }> = ({
+  label,
+  onClick,
+}) => (
   <button onClick={onClick}>
-    提出
+    {label}
     <style jsx>{`
       button {
         width: 6rem;
@@ -22,4 +25,12 @@ export const SubmitButton: FC<{ onClick?: () => void }> = ({ onClick }) => (
       }
     `}</style>
   </button>
+);
+
+export const SubmitButton: FC<{ onClick?: () => void }> = (props) => (
+  <BaseButton label="提出" {...props} />
+);
+
+export const CreateButton: FC<{ onClick?: () => void }> = (props) => (
+  <BaseButton label="作成" {...props} />
 );
