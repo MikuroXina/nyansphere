@@ -5,7 +5,7 @@ import type { Subject } from "../../lib/subject";
 import { SubjectText } from "../../components/subject-text";
 import { Template } from "../../components/template";
 import { fetchSubject } from "../../lib/fetch/subject";
-import { postSubmit } from "../../lib/post-submit";
+import { postSubmit } from "../../lib/post/submit";
 import { useJudgeState } from "../../lib/judge-state";
 
 const SubjectPage: NextPage<Subject> = (subject) => {
