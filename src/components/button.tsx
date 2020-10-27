@@ -15,6 +15,7 @@ const BaseButton: FC<{ label: string; onClick?: () => void }> = ({
         font-size: 1.25rem;
         border-radius: 50%;
         box-shadow: #aaa 2px 2px 4px;
+        cursor: pointer;
       }
       button:hover {
         color: #555;
