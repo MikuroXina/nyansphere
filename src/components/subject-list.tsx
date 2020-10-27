@@ -4,7 +4,7 @@ import { List } from "./list";
 import type { PartialSubject } from "../lib/subject";
 
 const SubjectColumn: FC<{ datum: PartialSubject }> = ({ datum: { title } }) => (
-  <span>{title}</span>
+  <div>{title}</div>
 );
 
 const SubjectListItem: FC<PartialSubject> = (datum) => (

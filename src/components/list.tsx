@@ -21,10 +21,12 @@ export function List<T>({
           border: solid 0 #aaa;
           border-bottom-width: thin;
           list-style: none;
-          cursor: pointer;
         }
         li:first-child {
           border-width: thin 0;
+        }
+        li > * {
+          cursor: pointer;
         }
       `}</style>
     </Card>
