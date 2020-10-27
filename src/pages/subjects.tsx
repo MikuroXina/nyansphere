@@ -1,4 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
+import { Card } from "../components/card";
+import { CreateButton } from "../components/button";
+import { InternalLink } from "../components/internal-link";
 import type { PartialSubject } from "../lib/subject";
 import { SubjectList } from "../components/subject-list";
 import { Template } from "../components/template";
@@ -10,7 +13,12 @@ interface SubjectsProps {
 
 const SubjectsPage: NextPage<SubjectsProps> = ({ subjects }) => (
   <Template>
-    <SubjectList data={subjects} />
+    <Card>
+      <SubjectList data={subjects} />
+      <InternalLink href="/subjects/new">
+        <CreateButton />
+      </InternalLink>
+    </Card>
   </Template>
 );
 
