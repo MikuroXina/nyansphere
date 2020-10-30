@@ -35,3 +35,29 @@ export const SubmitButton: FC<{ onClick?: () => void }> = (props) => (
 export const CreateButton: FC<{ onClick?: () => void }> = (props) => (
   <BaseButton label="作成" {...props} />
 );
+
+export const BigButton: FC<{ onClick: () => void; disabled: boolean }> = (
+  props,
+) => (
+  <button {...props}>
+    {props.children}
+    <style jsx>{`
+      button {
+        background-color: black;
+        color: #aaa;
+        font-size: 2rem;
+        margin: 2em;
+        padding: 0.5em;
+        border-radius: 1rem;
+        cursor: pointer;
+        transition: background-color 360ms;
+      }
+      button:disabled {
+        background-color: gray;
+      }
+      button:hover {
+        color: #ddd;
+      }
+    `}</style>
+  </button>
+);
