@@ -5,21 +5,18 @@ import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({});
 
-const DOMAIN = process.env.DOMAIN || "localhost:3000";
+const DOMAIN = process.env.DOMAIN || "http://localhost:3000";
 const SECRET_KEY = process.env.SECRET_KEY || "*******";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ phrase: string }>,
 ): Promise<void> {
-  const {
-    query: { mail },
-  } = req;
+  res.setHeader("Access-Control-Allow-Origin", DOMAIN);
 
-  if (Array.isArray(mail)) {
-    res.status(400).end("Bad Request");
-    return;
-  }
+  const { body } = req;
+  const { mail } = JSON.parse(body) as { mail: string };
+
   const salt = await bcrypt.genSalt();
   const token = jwt.sign({ salt, mail }, SECRET_KEY, { expiresIn: "30s" });
 
@@ -43,7 +40,12 @@ export default async function handler(
     "Zen",
   ];
   const phrase = phrases.sort(() => Math.random() + 0.5)[0];
-  await sendMail(mail, phrase, token);
+  try {
+    await sendMail(mail, phrase, token);
+  } catch (err) {
+    res.status(400).end("Bad Request\nINVALID_MAIL_ADDRESS");
+    return;
+  }
 
   res.status(200).json({ phrase });
 }
