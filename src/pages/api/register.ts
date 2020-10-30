@@ -18,14 +18,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const DOMAIN = process.env.DOMAIN || "http://localhost:3000";
+const URL_BASE = process.env.URL_BASE || "http://localhost:3000";
 const SECRET_KEY = process.env.SECRET_KEY || "*******";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ phrase: string }>,
 ): Promise<void> {
-  res.setHeader("Access-Control-Allow-Origin", DOMAIN);
+  res.setHeader("Access-Control-Allow-Origin", URL_BASE);
 
   const { body } = req;
   const { mail } = JSON.parse(body) as { mail: string };
@@ -68,6 +68,6 @@ function sendMail(mail: string, phrase: string, token: string) {
     from: "noreply.nyansphere@gmail.com",
     to: mail,
     subject: "Check your e-mail address",
-    text: `Security phrase: ${phrase}\n\n ---\n\nPlease check above phrase whether be same as our registration page on our site.\nThen go to the link below.\nThis link expires in 30 seconds.\n\n ---\n\nhttps://${DOMAIN}/api/register/verify?jwt=${token}`,
+    text: `Security phrase: ${phrase}\n\n ---\n\nPlease check above phrase whether be same as our registration page on our site.\nThen go to the link below.\nThis link expires in 30 seconds.\n\n ---\n\nhttps://${URL_BASE}/api/register/verify?jwt=${token}`,
   });
 }

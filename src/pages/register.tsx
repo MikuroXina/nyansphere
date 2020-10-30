@@ -4,7 +4,7 @@ import { DotsAnimation } from "../components/dots-animation";
 import type { NextPage } from "next";
 import { Template } from "../components/template";
 
-const DOMAIN = process.env.DOMAIN || "http://localhost:3000";
+const URL_BASE = process.env.URL_BASE || "http://localhost:3000";
 
 type ErrorKind = "INVALID_MAIL_ADDRESS" | "OTHER";
 
@@ -63,7 +63,7 @@ const middleware = (
   }
 
   reducer(action);
-  const res = await fetch(`${DOMAIN}/api/register`, {
+  const res = await fetch(`${URL_BASE}/api/register`, {
     method: "POST",
     body: JSON.stringify({ mail: state.mail }),
   });
