@@ -10,15 +10,14 @@ const SECRET_KEY = process.env.SECRET_KEY || "*******";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse<{ phrase: string }>,
 ): Promise<void> {
   const {
     query: { mail },
   } = req;
 
   if (Array.isArray(mail)) {
-    res.statusCode = 400;
-    res.end("Bad Request");
+    res.status(400).end("Bad Request");
     return;
   }
   const salt = await bcrypt.genSalt();
@@ -46,7 +45,7 @@ export default async function handler(
   const phrase = phrases.sort(() => Math.random() + 0.5)[0];
   await sendMail(mail, phrase, token);
 
-  res.end(JSON.stringify({ phrase }));
+  res.status(200).json({ phrase });
 }
 
 function sendMail(mail: string, phrase: string, token: string) {

@@ -10,12 +10,11 @@ export default async function handler(
   } = req;
 
   if (!session) {
-    res.statusCode = 400;
-    res.end("Bad Request");
+    res.status(400).end("Bad Request");
     return;
   }
   const client = new fauna.Client({ secret: session });
   await client.query(q.Logout(false));
 
-  res.end();
+  res.status(200).end();
 }

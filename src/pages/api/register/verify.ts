@@ -16,16 +16,14 @@ export default async function handler(
   } = req;
 
   if (Array.isArray(token)) {
-    res.statusCode = 400;
-    res.end("Bad Request");
+    res.status(400).end("Bad Request");
     return;
   }
   const mail = await new Promise<string>((resolve, reject) =>
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
       if (err) {
         console.error(err);
-        res.statusCode = 400;
-        res.end("Bad Request");
+        res.status(400).end("Bad Request");
         reject(err);
         return;
       }
@@ -41,6 +39,5 @@ export default async function handler(
   };
 
   res.setHeader("Set-Cookie", `session=${secret}`);
-  res.statusCode = 201;
-  res.end("Created");
+  res.status(201).end("Created");
 }
