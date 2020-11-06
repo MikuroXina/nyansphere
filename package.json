@@ -8,9 +8,9 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next",
-    "build": "next build",
-    "start": "next start",
+    "dev": "NODE_OPTIONS='--inspect' cd src/web && next",
+    "build": "cd src/web && next build",
+    "start": "cd src/web && next start",
     "lint": "eslint --ignore-path .gitignore 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
