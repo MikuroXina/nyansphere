@@ -1,11 +1,11 @@
 export class User {
-  #mailAddress: string;
+  private mailAddress: string;
 
   constructor(mail: string) {
-    this.#mailAddress = mail;
+    this.mailAddress = mail;
   }
 
   isEqualTo(other: User): boolean {
-    return this.#mailAddress === other.#mailAddress;
+    return this.mailAddress === other.mailAddress;
   }
 }
