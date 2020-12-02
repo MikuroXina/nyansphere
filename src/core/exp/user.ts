@@ -8,4 +8,8 @@ export class User {
   isEqualTo(other: User): boolean {
     return this.mailAddress === other.mailAddress;
   }
+
+  intoCollection(): unknown {
+    return { mail: this.mailAddress };
+  }
 }
