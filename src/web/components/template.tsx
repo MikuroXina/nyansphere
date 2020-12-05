@@ -52,6 +52,7 @@ export const Template: FC<{ headerItems?: ReactNode[] }> = ({
       body {
         margin: 0;
         padding: 0;
+        background-color: #eee;
       }
     `}</style>
   </>
